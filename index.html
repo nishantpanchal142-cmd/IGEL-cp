@@ -1,1 +1,51 @@
 
+function updateCountdown(){
+ const target=new Date("2026-11-17T00:00:00+05:30").getTime();
+ const now=Date.now();
+ const diff=target-now;
+ const el=document.getElementById("countdown");
+
+ if(!el)return;
+
+ if(diff<=0){
+  el.innerText="HAPPY BIRTHDAY PARI! 💜";
+  return;
+ }
+
+ const d=Math.floor(diff/86400000);
+ const h=Math.floor(diff%86400000/3600000);
+ const m=Math.floor(diff%3600000/60000);
+ const s=Math.floor(diff%60000/1000);
+
+ el.innerText=`${d}d ${h}h ${m}m ${s}s`;
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+function shootStars(){
+ for(let i=0;i<12;i++){
+  const star=document.createElement("div");
+  star.className="shooting-star";
+  star.innerText="✦";
+  star.style.setProperty("--x",Math.random()*90+"vw");
+  star.style.animationDelay=Math.random()+"s";
+  document.body.appendChild(star);
+  setTimeout(()=>star.remove(),3500);
+ }
+}
+
+function celebrate(){
+ const area=document.getElementById("celebration");
+ const emojis=["🎉","💜","✨","🎊","🌟","🦋"];
+
+ for(let i=0;i<45;i++){
+  const item=document.createElement("span");
+  item.className="confetti";
+  item.innerText=emojis[Math.floor(Math.random()*emojis.length)];
+  item.style.left=Math.random()*100+"%";
+  item.style.animationDelay=Math.random()*1.5+"s";
+  area.appendChild(item);
+  setTimeout(()=>item.remove(),5000);
+ }
+}
+
