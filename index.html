@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Pari 💜</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Georgia,serif;
+ color:white;
+ text-align:center;
+ min-height:100vh;
+ background:linear-gradient(145deg,#160d2b,#39205f,#21113e);
+ overflow-x:hidden;
+}
+body:before{
+ content:"✦  ·  ✧  ·  ✦  ·  ✧  ·  ✦";
+ position:fixed;
+ inset:10% 0;
+ color:#e7d9ff;
+ opacity:.35;
+ font-size:25px;
+ letter-spacing:18px;
+ pointer-events:none;
+ animation:twinkle 3s infinite alternate;
+}
+@keyframes twinkle{to{opacity:.8}}
+.container{
+ width:90%;
+ max-width:440px;
+ margin:55px auto;
+ padding:30px 20px;
+ border:1px solid #b99aff66;
+ border-radius:25px;
+ background:#ffffff12;
+ box-shadow:0 0 35px #b99aff22;
+ position:relative;
+}
+h1{color:#e7d9ff;font-size:30px}
+h2{color:#e7d9ff}
+p{line-height:1.8;font-size:16px}
+.butterfly{font-size:55px;animation:float 3s infinite}
+@keyframes float{50%{transform:translateY(-12px)}}
+button{
+ border:0;
+ border-radius:30px;
+ padding:13px 22px;
+ margin:8px;
+ background:linear-gradient(120deg,#b99aff,#e7d9ff);
+ color:#26133e;
+ font-weight:bold;
+ font-size:15px;
+ cursor:pointer;
+ box-shadow:0 0 15px #b99aff55;
+}
+button:active{transform:scale(.96)}
+.secondary{background:#ffffff20;color:white;border:1px solid #b99aff}
+.hidden{display:none}
+.jar{font-size:85px;margin:12px}
+.wish{
+ min-height:65px;
+ padding:15px;
+ color:#fff0c9;
+ font-size:17px;
+ line-height:1.6;
+}
+.cake{font-size:85px;margin:12px}
+#letter{
+ text-align:left;
+ padding:20px;
+ border-radius:18px;
+ background:#ffffff12;
+ line-height:1.8;
+}
+.line{
+ height:1px;
+ background:#b99aff77;
+ margin:20px 0;
+}
+.small{font-size:13px;color:#d9c9ff}
+footer{padding:20px;color:#d9c9ff}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="first">
+ <div class="butterfly">🦋</div>
+ <h1>A Little Surprise</h1>
+ <p>I made a little dream just for you...</p>
+ <p>Are you ready to enter your birthday universe? ✨</p>
+ <button onclick="yes()">YES, LET'S GO 💜</button>
+ <button class="secondary" onclick="no()">NO 🙈</button>
+ <p id="no" class="small"></p>
+</div>
+
+<div class="container hidden" id="second">
+ <div class="butterfly">🦋</div>
+ <h1>Happy Birthday Pari!</h1>
+ <p>Today, your little universe is filled with love, stars and wishes. 🌙</p>
+
+ <div class="line"></div>
+
+ <h2>🫙 A Jar Full of Wishes</h2>
+ <div class="jar">🫙</div>
+ <p class="small">Tap the button to discover a little wish!</p>
+ <div class="wish" id="wish">Your first little wish is waiting... 💜</div>
+ <button onclick="nextWish()">OPEN A WISH ✨</button>
+
+ <div class="line"></div>
+
+ <h2>🎂 Make a Wish</h2>
+ <div class="cake" id="cake">🎂</div>
+ <p id="cakeText">Close your eyes and make a beautiful wish!</p>
+ <button onclick="makeWish()">MAKE A WISH 🌟</button>
+
+ <div class="line"></div>
+
+ <h2>A Little Letter 💌</h2>
+ <button onclick="openLetter()">OPEN YOUR LETTER</button>
+ <div id="letter" class="hidden">
+  <h2>Dear Pari, 💜</h2>
+  <p>Happy Birthday to you! 🥹</p>
+  <p>I hope this birthday brings you countless reasons to smile, beautiful memories and all the happiness you deserve.</p>
+  <p>Keep shining, keep smiling and never stop being your wonderful self.</p>
+  <p>And please, don't get angry so often! 🥺</p>
+  <div class="line"></div>
+  <h2>With lots of wishes ✨</h2>
+  <p style="text-align:center">🎂💜🌙</p>
+ </div>
+</div>
+
+<footer>Made with 💜 just for Pari</footer>
+
+<script>
+const wishes=[
+ "May your smile always find a reason to shine. 💜",
+ "May this year bring you beautiful surprises. ✨",
+ "May all your little dreams find their way to you. 🌙",
+ "You deserve happiness, laughter and lovely memories. 🦋",
+ "Never forget how special you are. 💗",
+ "May your new chapter be your most magical one yet!"
+];
+
+let wishIndex=0;
+
+function yes(){
+ document.getElementById("first").classList.add("hidden");
+ document.getElementById("second").classList.remove("hidden");
+ window.scrollTo(0,0);
+}
+
+function no(){
+ document.getElementById("no").innerText=
+ "Hehe, there's a little surprise waiting! Try YES 💜";
+}
+
+function nextWish(){
+ document.getElementById("wish").innerText=wishes[wishIndex];
+ wishIndex=(wishIndex+1)%wishes.length;
+}
+
+function makeWish(){
+ document.getElementById("cake").innerText="🎂✨";
+ document.getElementById("cakeText").innerText=
+ "May your wish come true, Pari! Happy Birthday! 💜🌙";
+}
+
+function openLetter(){
+ document.getElementById("letter").classList.toggle("hidden");
+}
+</script>
+
+</body>
+</html>
